@@ -1,42 +1,32 @@
-import React, { useContext } from "react";
+import React from 'react';
 
-import Login from "./components/Login/Login";
-import Home from "./components/Home/Home";
-import MainHeader from "./components/MainHeader/MainHeader";
-import AuthContext from "./store/auth-context";
+import MoviesList from './components/MoviesList';
+import './App.css';
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // useEffect(() => {
-  //   const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
-
-  //   if (storedUserLoggedInInformation === "1") {
-  //     setIsLoggedIn(true);
-  //   }
-  // }, []);
-
-  // const loginHandler = (email, password) => {
-  //   // We should of course check email and password
-  //   // But it's just a dummy/ demo anyways
-  //   localStorage.setItem("isLoggedIn", "1");
-  //   setIsLoggedIn(true);
-  // };
-
-  // const logoutHandler = () => {
-  //   localStorage.removeItem("isLoggedIn");
-  //   setIsLoggedIn(false);
-  // };
-
-  const authCtx = useContext(AuthContext);
+  const dummyMovies = [
+    {
+      id: 1,
+      title: 'Some Dummy Movie',
+      openingText: 'This is the opening text of the movie',
+      releaseDate: '2021-05-18',
+    },
+    {
+      id: 2,
+      title: 'Some Dummy Movie 2',
+      openingText: 'This is the second opening text of the movie',
+      releaseDate: '2021-05-19',
+    },
+  ];
 
   return (
     <React.Fragment>
-      <MainHeader />
-      <main>
-        {!authCtx.isLoggedIn && <Login />}
-        {authCtx.isLoggedIn && <Home />}
-      </main>
+      <section>
+        <button>Fetch Movies</button>
+      </section>
+      <section>
+        <MoviesList movies={dummyMovies} />
+      </section>
     </React.Fragment>
   );
 }
